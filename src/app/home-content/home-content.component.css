@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  flex-direction: column;
+  margin: 55px 0 55px 0;
+  box-sizing: border-box;
+  padding: 10px;
+  /* float: right; */
+  /* margin-right: 20px; */
+  width: fit-content;
+}
+mat-tab-group {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}

@@ -1,0 +1,175 @@
+<div class="signupForm">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="message" class="success-msg">
+      <mat-card>
+        <mat-card-content>
+          <span class="err-msg">{{ message }}</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-accordion class="headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Names</mat-panel-title>
+          <mat-panel-description> Preferred Names
+            <mat-icon class="account">account_box</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="First Name"
+            formControlName="firstname"
+            [ngClass]="{ 'is-invalid': submitted && status.firstname.errors }"
+            required
+          />
+          <mat-error *ngIf="status.firstname.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Last Name"
+            formControlName="lastname"
+            [ngClass]="{ 'is-invalid': submitted && status.lastname.errors }"
+            required
+          />
+          <mat-error *ngIf="status.lastname.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Contact Information</mat-panel-title>
+          <mat-panel-description> Contact Address </mat-panel-description>
+          <mat-icon class="account">info</mat-icon>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Address"
+            formControlName="address"
+            [ngClass]="{ 'is-invalid': submitted && status.address.errors }"
+            required
+          />
+          <mat-error *ngIf="status.address.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Organisation"
+            formControlName="organisation"
+            [ngClass]="{
+              'is-invalid': submitted && status.organisation.errors
+            }"
+            required
+          />
+          <mat-error *ngIf="status.organisation.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Account</mat-panel-title>
+          <mat-panel-description
+            >Preferred Account details</mat-panel-description
+          >
+          <mat-icon class="account">account_box</mat-icon>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && status.email.errors }"
+            required
+          />
+          <mat-icon matSuffix>alternate_email</mat-icon>
+          <mat-error *ngIf="status.email.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+            [ngClass]="{ 'is-invalid': submitted && status.password.errors }"
+            required
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <mat-error *ngIf="status.password.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Confirm Password"
+            [type]="hide ? 'password' : 'text'"
+            [ngClass]="{ 'is-invalid': submitted && status.confirm.errors }"
+            formControlName="confirm"
+            required
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <mat-error *ngIf="status.confirm.invalid">{{
+            getErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="hiddenEl">
+          <input
+            matInput
+            formControlName="accountType"
+            [value]="regular"
+            [ngClass]="{ 'is-invalid': submitted && status.accountType.errors }"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="hiddenEl">
+          <input
+            matInput
+            formControlName="package"
+            [value]="classic"
+            [ngClass]="{ 'is-invalid': submitted && status.package.errors }"
+          />
+        </mat-form-field>
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" type="submit" [disabled]="disableBtn()">
+          Sign up</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+</div>

@@ -1,0 +1,68 @@
+.verify-container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: auto;
+  width: fit-content;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: fit-content;
+  padding: 20px;
+}
+.verify-container mat-card div {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: calc(100vw - 60vw);
+  padding: 5px;
+  height: fit-content;
+  justify-self: center;
+  justify-items: center;
+  justify-self: center;
+  align-items: center;
+  align-content: center;
+}
+mat-card {
+  margin-bottom: 35px;
+}
+mat-card-content, div {
+  margin-top: 8px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-items: center;
+  justify-self: center;
+  align-items: center;
+  align-content: center;
+}
+.verified {
+  float: right;
+  color: green;
+}
+.account {
+  justify-items: center;
+  justify-self: center;
+  align-items: center;
+  align-content: center;
+  font-size: 10rem;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  margin-top: 8px;
+  color: rgb(63, 81, 181);
+  width: fit-content;
+  height: fit-content;
+}
+mat-action, mat-action button{
+  width: fit-content;
+  height: fit-content;
+  /* display: flex; */
+  /* flex-direction: column; */
+  float: right;
+}
+a {
+  text-decoration: none;
+  color: white;
+}

@@ -1,0 +1,53 @@
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 5px;
+}
+.signupForm mat-form-field {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  display: flex;
+  box-sizing: border-box;
+  margin: 10px auto 0px auto;
+}
+.hiddenEl{
+  display: none !important;
+}
+input, input.ng-dirty, input.ng-touched, input.ng-valid, input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+  background-color: rgb(250, 250, 250) !important;
+}
+span {
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+}
+.err-msg {
+  display: flex;
+  flex-direction: column;
+  color: red;
+  text-align: center;
+}
+.success-msg {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  font-size: 10px;
+  margin: auto auto 10px auto;
+  word-wrap: break-word;
+}
+.headers-align mat-expansion-panel mat-panel-description > mat-icon.account{
+  margin-left: 30px;
+}
+.headers-align mat-expansion-panel-header, .headers-align mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+.headers-align mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}

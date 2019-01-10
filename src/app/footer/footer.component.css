@@ -1,0 +1,18 @@
+footer {
+  display: flex;
+  position: fixed;
+  top: initial;
+  /* flex-direction: column; */
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+  height: 45px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: rgb(255, 255, 255);
+  background: rgb(63, 81, 181);
+}

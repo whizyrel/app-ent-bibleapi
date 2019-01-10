@@ -1,0 +1,43 @@
+<div class="signinForm">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="message" class="success-msg">
+          <mat-card>
+            <mat-card-content>
+              <span class="err-msg">{{ message }}</span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && status.email.errors }"
+            required />
+          <mat-icon matSuffix>alternate_email</mat-icon>
+          <mat-error *ngIf="status.email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'"
+            [ngClass]="{ 'is-invalid': submitted && status.password.errors }" required />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          <mat-error *ngIf="status.password.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      
+        <button mat-flat-button color="primary" type="submit" [disabled]="(status.email.value == '' || status.password.value == '') || logInForm.invalid">Signin</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- use mat-card for forgot password -->
+  <mat-accordion class="signin-opts">
+    <mat-expansion-panel class="signin-opts">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Forgot Password</mat-panel-title>
+      </mat-expansion-panel-header>
+      <span>Do you want to recover your Password?</span>
+      <button mat-flat-button color="primary"> <a [routerLink]="['/verify']">Recover</a></button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

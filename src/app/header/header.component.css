@@ -1,0 +1,29 @@
+nav {
+  display: flex;
+  /* flex-direction: column; */
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 45px !important;
+  width: 100%;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+}
+mat-toolbar {
+  display: flex;
+  /* flex-direction: column; */
+  box-sizing: border-box;
+  width: 100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgb(63, 81, 181);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}

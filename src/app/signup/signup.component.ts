@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators
-} from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { signUpProp } from '../interfaces/signup.interface';
 
@@ -19,17 +14,14 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   signUpDet: signUpProp;
+  response: { message?: string };
   message: string;
 
   public step = 0;
   public submitted = true;
   public hide = true;
 
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private _signUpService: SignupService
-  ) {}
+  constructor(private router: Router, private formBuilder: FormBuilder, private _signUpService: SignupService) { }
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group(
@@ -38,24 +30,22 @@ export class SignupComponent implements OnInit {
         lastname: new FormControl('', Validators.required),
         address: new FormControl('', Validators.required),
         organisation: new FormControl('', Validators.required),
-        email: new FormControl('', [Validators.required, /* Validators.email, */
+        email: new FormControl('', [
+          Validators.required /* Validators.email, */,
           Validators.pattern(
             // tslint:disable-next-line:max-line-length
             /[a-zA-Z0-9!#$%&' * +/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?/
-          )]),
+          )
+        ]),
         accountType: new FormControl('', Validators.required),
         package: new FormControl('', Validators.required),
         password: new FormControl('', [
           Validators.required,
-          Validators.pattern(
-            '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$'
-          )
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$')
         ]),
         confirm: new FormControl('', [
           Validators.required,
-          Validators.pattern(
-            '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$'
-          )
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$')
         ])
       },
       { validators: this.passwordMatchValidator }
@@ -75,44 +65,41 @@ export class SignupComponent implements OnInit {
   }
 
   passwordMatchValidator(form) {
-    return form.get('password').value === form.get('confirm').value
-      ? null
-      : { mismatch: true };
+    return form.get('password').value === form.get('confirm').value ? null : { mismatch: true };
   }
 
   getErrorMessage() {
     if (this.status.email.hasError) {
       // tslint:disable-next-line:max-line-length
-      return this.status.email.hasError('required') ? 'You must enter a value' : this.status.email.hasError('pattern') ? 'Not a valid email' : '';
+      return this.status.email.hasError('required')
+        ? 'You must enter a value'
+        : this.status.email.hasError('pattern') ? 'Not a valid email' : '';
     }
     if (this.status.password.hasError) {
       return this.status.password.hasError('required')
-      ? 'You must enter a value'
-      : this.status.password.hasError('pattern')
-      ? 'Password must contain at least 1 Uppercase letter and number'
-      : '';
+        ? 'You must enter a value'
+        : this.status.password.hasError('pattern')
+          ? 'Password must contain at least 1 Uppercase letter and number'
+          : '';
     }
     if (this.status.confirm.hasError) {
-      return this.status.confirm.hasError('required') ? 'You must enter a value'
-      : this.status.confirm.hasError('pattern')
-      ? 'Password must contain at least 1 Uppercase letter and number'
-      : '';
+      return this.status.confirm.hasError('required')
+        ? 'You must enter a value'
+        : this.status.confirm.hasError('pattern')
+          ? 'Password must contain at least 1 Uppercase letter and number'
+          : '';
     }
     if (this.status.firstname.hasError) {
-      return this.status.firstname.hasError('required')
-      ? 'You must enter a value' : '';
+      return this.status.firstname.hasError('required') ? 'You must enter a value' : '';
     }
     if (this.status.lastname.hasError) {
-      return this.status.lastname.hasError('required')
-      ? 'You must enter a value' : '';
+      return this.status.lastname.hasError('required') ? 'You must enter a value' : '';
     }
     if (this.status.address.hasError) {
-      return this.status.address.hasError('required')
-      ? 'You must enter a value' : '';
+      return this.status.address.hasError('required') ? 'You must enter a value' : '';
     }
     if (this.status.organisation.hasError) {
-      return this.status.organisation.hasError('required')
-      ? 'You must enter a value' : '';
+      return this.status.organisation.hasError('required') ? 'You must enter a value' : '';
     }
   }
 
@@ -144,16 +131,17 @@ export class SignupComponent implements OnInit {
       this.submitted = true;
       this.signUpDet = this.signUpForm.getRawValue();
       window.console.log(this.signUpDet);
-      // post detials to server for creating account
+      // post details to server for creating account
       this._signUpService.createAccount(this.signUpDet).subscribe(
-        data => {
-          this.message = data.message;
+        (data) => {
+          this.response = data;
+          this.message = this.response.message;
           console.log(data);
           // navigate to confirmation component render route
           // this.router.navigate(['/account/confirm']);
-          // didnt get mail buttton
+          // probable: didnt get mail buttton
         },
-        error => {
+        (error) => {
           this.message = error.error.message;
           console.log(error);
         }

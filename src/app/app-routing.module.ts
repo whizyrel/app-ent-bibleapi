@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'account/verify/:enc', component: VerifyUserComponent, pathMatch: 'full' },
+  { path: 'account/verify/', component: VerifyUserComponent, pathMatch: 'full' },
   {
     path: 'account/forgot',
     component: ForgotPasswordComponent,

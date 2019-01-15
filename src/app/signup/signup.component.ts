@@ -137,8 +137,6 @@ export class SignupComponent implements OnInit {
           this.response = data;
           this.message = this.response.message;
           console.log(data);
-          // navigate to confirmation component render route
-          // this.router.navigate(['/account/confirm']);
           // probable: didnt get mail buttton
         },
         (error) => {
@@ -149,7 +147,6 @@ export class SignupComponent implements OnInit {
     }
     // display messages || reset form fields to ''
     // this.signUpForm.reset({});
-    // navigate to account confirm route
     // password doesn't match error
     // }
     // window.console.log(this.signUpForm.invalid);

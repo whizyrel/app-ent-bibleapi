@@ -8,15 +8,12 @@
     <mat-card-content>
       <mat-divider [inset]="true"></mat-divider>
       <div *ngIf="message">
-<!--         <form [formGroup]="verifyForm"(ngSubmit)="onSubmit()">
-
-        </form> -->
         <mat-icon class="account">account_circle</mat-icon>
         <span>{{message}}</span>
       </div>
     </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary" [disabled]="message ? false : true"> <a [routerLink]="['/user/dashboard']">Login</a></button>
+        <button mat-flat-button color="primary" [disabled]="message ? false : true"> <a [routerLink]="[' ']">Login</a></button>
       </mat-card-actions>
   </mat-card>
 </div>

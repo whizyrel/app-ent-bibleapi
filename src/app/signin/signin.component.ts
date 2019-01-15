@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  Validators,
-  FormGroup,
-  FormBuilder
-} from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { signInProp } from '../interfaces/signin.interface';
@@ -20,6 +15,7 @@ import { AuthTokenService } from '../services/auth-token.service';
 export class SigninComponent implements OnInit {
   logInForm: FormGroup;
   signInDet: signInProp;
+  response: { details?: { accountType?: string } };
   message: string;
 
   public hide = true;
@@ -32,7 +28,7 @@ export class SigninComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _submitForm: SigninService,
     private _saveToken: AuthTokenService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.logInForm = this.formBuilder.group({
@@ -49,16 +45,12 @@ export class SigninComponent implements OnInit {
 
   getErrorMessage() {
     if (this.status.password.hasError) {
-      return this.status.password.hasError('required')
-        ? 'You must enter a value'
-        : '';
+      return this.status.password.hasError('required') ? 'You must enter a value' : '';
     }
     if (this.status.email.hasError) {
       return this.status.email.hasError('required')
         ? 'You must enter a value'
-        : this.status.email.hasError('pattern')
-        ? 'Not a valid email'
-        : '';
+        : this.status.email.hasError('pattern') ? 'Not a valid email' : '';
     }
   }
 
@@ -76,21 +68,25 @@ export class SigninComponent implements OnInit {
       );
 
       this._submitForm.submitUser(this.signInDet).subscribe(
-        data => {
+        (data) => {
           this._response = data.body;
           if (this._response.hasOwnProperty('token')) {
+            // console.log(data.body);
             // if verified
             this._saveToken.getToken(data.body);
             this.message = '';
-            // navigate to dashboard route
-            this.router.navigate(['user/dashboard']);
+            // navigate to dashboard route: either admin dashboard route or regular dashboard route
+            this.response = data.body;
+            this.response.details.accountType === 'regular'
+              ? this.router.navigate(['user/dashboard'])
+              : this.router.navigate(['admin/dashboard']);
           } else {
             // others like wrong details || unverified
             this.message = this._response.message;
             window.console.log(data);
           }
         },
-        error => {
+        (error) => {
           this.message = error.error.message;
           window.console.log(error);
         }

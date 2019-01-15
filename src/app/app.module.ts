@@ -27,13 +27,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeContentComponent } from './home-content/home-content.component';
+import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './signup/signup.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { SigninComponent } from './signin/signin.component';
 import { AccountConfirmComponent } from './account-confirm/account-confirm.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FooterComponent } from './footer/footer.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -41,17 +42,18 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     HeaderComponent,
     HomeContentComponent,
+    FooterComponent,
     SignupComponent,
     SigninComponent,
     VerifyUserComponent,
     AccountConfirmComponent,
     ForgotPasswordComponent,
     DashboardComponent,
-    FooterComponent
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
-      appId: /* process.env.appID */ 'app-api-service'
+      appId: 'app-api-service'
     }),
     BrowserAnimationsModule,
     HttpClientModule,

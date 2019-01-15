@@ -10,7 +10,9 @@ import { VerifyUserService } from '../services/verify-user.service';
 })
 export class VerifyUserComponent implements OnInit {
   public year;
+  public response: { message?: string };
   public message = '';
+  private verificationData: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -18,30 +20,28 @@ export class VerifyUserComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.verifyForm = this.formBuilder.group();
     this.year = new Date().getFullYear();
 
-    /* this.verifyUserService.verifyUser(this.getParam()).subscribe(
+    this.getParam();
+
+    this.verifyUserService.verifyUser(this.verificationData).subscribe(
       data => {
-        this.message = data.body.message;
+        this.response = data.body;
+        this.message = this.response.message;
         console.log(data);
       },
       error => {
         this.message = error.error.message;
         console.log(error);
       }
-    ); */
+    );
   }
   getParam() {
     // grab param
-    const param = this.activatedRoute.params;
-    /*
-    this.activatedRoute.params.subscribe(data => {
-      const param = data.value.enc
-    })
-     */
-    console.log(param);
-
-    return param; // this route param
+    this.activatedRoute.queryParams.subscribe(params => {
+      const value = params.enc;
+      this.verificationData = value;
+      console.log(params);
+    });
   }
 }

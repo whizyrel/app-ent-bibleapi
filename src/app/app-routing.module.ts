@@ -5,10 +5,11 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { AccountConfirmComponent } from './account-confirm/account-confirm.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'account/verify/', component: VerifyUserComponent, pathMatch: 'full' },
+  { path: 'account/verify', component: VerifyUserComponent, pathMatch: 'full' },
   {
     path: 'account/forgot',
     component: ForgotPasswordComponent,
@@ -20,6 +21,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'user/dashboard', component: DashboardComponent, pathMatch: 'full' },
+  { path: 'admin/dashboard', component: AdminDashboardComponent, pathMatch: 'full' },
   { path: '**', component: HomeComponent, redirectTo: '' }
 ];
 

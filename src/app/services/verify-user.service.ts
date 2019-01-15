@@ -18,16 +18,13 @@ export class VerifyUserService {
 
   verifyUser(param): Observable<HttpResponse<Object>> {
     window.console.log(param);
-    // window.console.log();
     this.url = this.apiUrls.userUrls.verify;
     return this.http.patch(this.url, null, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
       observe: 'response',
-      params: new HttpParams({
-      fromString: param
-    }),
+      params: new HttpParams().set('enc', param),
       responseType: 'json'
     });
   }

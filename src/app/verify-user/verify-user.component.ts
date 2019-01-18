@@ -44,4 +44,5 @@ export class VerifyUserComponent implements OnInit {
       console.log(params);
     });
   }
+  // add loading bar
 }

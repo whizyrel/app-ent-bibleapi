@@ -16,6 +16,8 @@ export class SignupComponent implements OnInit {
   signUpDet: signUpProp;
   response: { message?: string };
   message: string;
+  regular: string;
+  classic: string;
 
   public step = 0;
   public submitted = true;
@@ -23,7 +25,10 @@ export class SignupComponent implements OnInit {
 
   constructor(private router: Router, private formBuilder: FormBuilder, private _signUpService: SignupService) { }
 
-  ngOnInit() {
+  ngOnInit () {
+    this.regular = 'regular';
+    this.classic = 'classic';
+
     this.signUpForm = this.formBuilder.group(
       {
         firstname: new FormControl('', Validators.required),

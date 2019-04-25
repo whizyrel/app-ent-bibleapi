@@ -1,36 +1,38 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: `root`
 })
 export class ApiUrlsService {
+  private URL = `https://api-ent-tech.herokuapp.com`;
+
   constructor() {}
 
   get userUrls() {
     return {
-      signup: 'http://localhost:4445/users/signup',
-      signin: 'http://localhost:4445/users/signin',
-      modify: 'http://localhost:4445/users/modify',
-      delete: 'http://localhost:4445/users/delete',
-      forgot: 'http://localhost:4445/users/forgot',
-      retrieve: 'http://localhost:4445/users/retrieve',
-      list: 'http://localhost:4445/users/lists',
-      upgrade: 'http://localhost:4445/users/upgrade',
-      payments: 'http://localhost:4445/users/payments',
-      verify: 'http://localhost:4445/users/verify/'
+      signup: `${this.URL}/users/signup`,
+      signin: `${this.URL}/users/signin`,
+      modify: `${this.URL}/users/modify`,
+      delete: `${this.URL}/users/delete`,
+      forgot: `${this.URL}/users/forgot`,
+      retrieve: `${this.URL}/users/retrieve`,
+      list: `${this.URL}/users/lists`,
+      upgrade: `${this.URL}/users/upgrade`,
+      payments: `${this.URL}/users/payments`,
+      verify: `${this.URL}/users/verify/`
     };
   }
   get donationUrls() {
     return {
-      give: 'localhost:4445/users/give',
-      list: 'localhost:4445/users/list'
+      give: `${this.URL}/users/give`,
+      list: `${this.URL}/users/list`
     };
   }
   get FeedbackUrls() {
     return {
-      list: 'localhost:4445/users/payments',
-      submit: 'localhost:4445/users/submit',
-      archive: 'localhost:4445/users/archive'
+      list: `${this.URL}/users/payments`,
+      submit: `${this.URL}/users/submit`,
+      archive: `${this.URL}/users/archive`
     };
   }
 }

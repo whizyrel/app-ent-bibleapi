@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: `root`
 })
 export class ApiUrlsService {
-  private URL = `https://api-ent-tech.herokuapp.com`;
+  private URL = `https://api-ent-bible.herokuapp.com`;
 
   constructor() {}
 

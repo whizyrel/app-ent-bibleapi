@@ -1,0 +1,20 @@
+div {
+  display: flex;
+  height: 100%;
+  width: fit-content;
+  margin: auto;
+  justify-self: center;
+  justify-items: center;
+  justify-self: center;
+  align-items: center;
+  align-content: center;
+}
+/* div > app-home {
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+}
+ */

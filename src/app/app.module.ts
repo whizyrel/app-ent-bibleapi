@@ -72,7 +72,9 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     MatExpansionModule,
     MatDividerModule
   ],
-  providers: [ApiUrlsService, SigninService, AuthTokenService],
+  providers: [
+    ApiUrlsService, SigninService, AuthTokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

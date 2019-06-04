@@ -20,9 +20,12 @@ const routes: Routes = [
     component: AccountConfirmComponent,
     pathMatch: 'full'
   },
-  { path: 'user/dashboard', component: DashboardComponent, pathMatch: 'full' },
-  { path: 'admin/dashboard', component: AdminDashboardComponent, pathMatch: 'full' },
-  { path: '**', component: HomeComponent, redirectTo: '' }
+  {
+    path: 'user/dashboard', component: DashboardComponent, pathMatch: 'full'
+  },
+  {
+    path: 'admin/dashboard', component: AdminDashboardComponent, pathMatch: 'full'
+  }
 ];
 
 @NgModule({

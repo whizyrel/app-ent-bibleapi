@@ -15,7 +15,7 @@ import { AuthTokenService } from '../services/auth-token.service';
 export class SigninComponent implements OnInit {
   logInForm: FormGroup;
   signInDet: signInProp;
-  response: { details?: { accountType?: string } };
+  response: { details?: { accountType?: string } }; // make public
   message: string;
 
   public hide = true;
@@ -39,7 +39,10 @@ export class SigninComponent implements OnInit {
           /[a-zA-Z0-9!#$%&' * +/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?/
         )
       ]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [
+        Validators.required,
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$')
+      ])
     });
   }
 

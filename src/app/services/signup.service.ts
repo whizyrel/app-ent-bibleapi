@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
+import { signUpProp } from '../interfaces/signup.interface';
 import { ApiUrlsService } from './api-urls.service';
 
 @Injectable({
@@ -12,7 +14,7 @@ export class SignupService {
 
   constructor(private _urls: ApiUrlsService, private _http: HttpClient) {}
 
-  createAccount(details): Observable<Object> {
+  createAccount(details: signUpProp): Observable<Object> {
     this.url = this._urls.userUrls.signup;
 
     console.log(this.url);

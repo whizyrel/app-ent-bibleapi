@@ -1,25 +1,26 @@
-app-header {
+div {
+  margin: auto;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+}
+/* app-header {
   box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 3;
-}
+} */
 app-content {
   display: flex;
-  /* position: relative; */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  margin: auto;
   flex-direction: column;
   box-sizing: border-box;
-  width: 100%;
+  width: fit-content;
   height: fit-content;
-  z-index: 1;
 }
-app-footer {
+/* app-footer {
   position: fixed;
   top: initial;
   display: flex;
@@ -33,4 +34,4 @@ app-footer {
   height: fit-content;
   margin-top: 100px;
   z-index: 3;
-}
+} */
